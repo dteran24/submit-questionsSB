@@ -25,7 +25,7 @@ public class QuestionController {
     }
     @RequestMapping(value = "create-question", method = RequestMethod.POST)
     public void createQuestion(@RequestBody Question question){
-       questionService.addQuestion(question.getUserId(), question.getAuthor(),question.getQuestion(),question.getAnswer(), LocalDate.now().minusDays(5),2);
+       questionService.addQuestion(question.getUserId(), question.getAuthor(),question.getQuestion(), question.getMyAnswers(), question.getAnswer(), LocalDate.now(), question.getDifficulty());
     }
     @RequestMapping(value = "delete-question", method = RequestMethod.DELETE)
     public void deleteQuestion(@RequestParam int id){

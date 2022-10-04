@@ -4,6 +4,7 @@ import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 
 @Entity
@@ -20,21 +21,31 @@ public class Question {
     private String question;
     @NotBlank(message = "Answer is mandatory")
     private String answer;
+    @NotBlank
+    private String[] myAnswers;
 
     private LocalDate dateOfCreation;
     @NotBlank(message = "Difficulty is mandatory")
     private int difficulty;
 
-    public Question(int id, int userId, String author, String question, String answer, LocalDate dateOfCreation, int difficulty) {
+    public Question(int id, int userId, String author, String question, String[] myAnswers, String answer, LocalDate dateOfCreation, int difficulty) {
         this.id = id;
         this.userId = userId;
         this.author = author;
+        this.myAnswers = myAnswers;
         this.question = question;
         this.answer = answer;
         this.dateOfCreation = dateOfCreation;
         this.difficulty = difficulty;
     }
 
+    public String[] getMyAnswers() {
+        return myAnswers;
+    }
+
+    public void setMyAnswers(String[] myAnswers) {
+        this.myAnswers = myAnswers;
+    }
 
     public int getId() {
         return id;
