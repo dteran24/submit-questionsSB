@@ -1,5 +1,6 @@
 package com.questions.SubmitQuestions.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class Question {
     @NotBlank(message = "Answer is mandatory")
     private String answer;
     @NotBlank
+    @JsonProperty("my_answers")
     private String[] myAnswers;
 
     private LocalDate dateOfCreation;

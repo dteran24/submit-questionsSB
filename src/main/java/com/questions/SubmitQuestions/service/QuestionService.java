@@ -31,4 +31,12 @@ public class QuestionService {
         Predicate<? super Question> predicate = question -> question.getId() == id;
         questions.removeIf(predicate);
     }
+    public void updateQuestion(int id, int userId, String author, String question,String[]myAnswers, String answer, LocalDate creationDate, int difficulty){
+        Predicate<? super Question> predicate = uQuestion -> uQuestion.getId() == id;
+        questions.removeIf(predicate);
+
+        Question userQuestion = new Question(++questionCount, userId, author, question,myAnswers, answer, creationDate, difficulty);
+        questions.add(userQuestion);
+
+    }
 }

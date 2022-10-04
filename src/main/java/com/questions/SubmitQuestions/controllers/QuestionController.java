@@ -31,5 +31,10 @@ public class QuestionController {
     public void deleteQuestion(@RequestParam int id){
         questionService.deleteQuestion(id);
     }
+    @RequestMapping(value = "update-question", method = RequestMethod.POST)
+    public void updateQuestion(@RequestParam int id, @RequestBody Question question){
+        questionService.updateQuestion(id, question.getUserId(), question.getAuthor(),question.getQuestion(), question.getMyAnswers(), question.getAnswer(), LocalDate.now(), question.getDifficulty());
+
+    }
 
 }
